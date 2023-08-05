@@ -238,6 +238,27 @@ bool removerDaPos(ITEM *item, int i, LISTA *l) {
     return resultado;
 }
 
+LISTA * clonar(LISTA *l){
+    LISTA* novaLista = (LISTA *) malloc (sizeof(LISTA*));
+    inicializar(novaLista);
+
+    NO* ponteiroAUX;
+    ponteiroAUX = l->cabeca;
+
+    while (ponteiroAUX->prox != NULL)
+    {
+        ITEM novoItem = ponteiroAUX->item;
+        inserirNoFinal(novoItem, novaLista);
+        ponteiroAUX = ponteiroAUX->prox;
+        
+    }
+    ITEM novoItem = ponteiroAUX->item;
+    inserirNoFinal(novoItem, novaLista);
+    ponteiroAUX = ponteiroAUX->prox;
+    return novaLista;
+
+}
+
 
 void exibirItem(ITEM i)
 {

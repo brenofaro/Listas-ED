@@ -89,6 +89,8 @@ bool remover(ITEM item, LISTA *l);
 
 bool removerDaPos(ITEM *item, int i, LISTA *l);
 
+LISTA * clonar(LISTA *l);
+
 // Exibicao de um item da lista
 void exibirItem(ITEM i);
 

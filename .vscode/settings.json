@@ -6,6 +6,7 @@
     },
     "conventionalCommits.scopes": [
         "questao1",
-        "lista-3-2"
+        "lista-3-2",
+        "lista-3-3"
     ]
 }
