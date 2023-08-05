@@ -1,3 +1,10 @@
 {
-    "c-cpp-compile-run.c-flags": "-Wall -Wextra -g3 ListaEncadeada.c"
+    "c-cpp-compile-run.c-flags": "-Wall -Wextra -g3 ListaEncadeada.c",
+    "files.associations": {
+        "stdio.h": "c",
+        "string.h": "c"
+    },
+    "conventionalCommits.scopes": [
+        "questao1"
+    ]
 }

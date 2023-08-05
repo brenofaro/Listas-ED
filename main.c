@@ -11,6 +11,9 @@ void imprimirStatus(LISTA *l)
     printf("Tamanho = %d\n", tamanho(l));
 	exibirLista(l);
 	printf("\n");
+    printf("Cauda:\n");
+    printf("%d", l->cauda->item);
+    printf("\n");
 }
 
 // Testa a insercao de valores na lista
@@ -111,7 +114,25 @@ void testarAlterar(LISTA *l)
         printf("Digite a posicao que deseja alterar (ou -1 para sair): ");
         scanf("%d", &p);
     }
+
 }
+
+void testarInserirNoFinal(LISTA *l){
+        printf("=> Teste de InserirNoFinal\n");
+        int qtd;
+        printf("Quantos itens deseja guardar na lista? ");
+        scanf("%d", &qtd);
+
+        ITEM item;
+        for (int i = 1; i <= qtd; i++)
+        {
+            printf("Digite o valor %d/%d: ", i, qtd);
+            scanf("%d", &item);
+            inserirNoFinal(item, l);
+        }
+
+        imprimirStatus(l);
+    }
 
 /////////////////////////////////////////////////////
 
@@ -120,12 +141,14 @@ int main(){
 	
 	inicializar(&l);
     testarInserir(&l);
-    testarInserirNaPos(&l);
+    testarInserirNoFinal(&l);
+    //testarInserirNaPos(&l);
+    /*
     testarBuscar(&l);   
     testarAlterar(&l);
     destruir(&l);
     imprimirStatus(&l);
-        
+    */
     getchar();
 	return 0;
 }

@@ -17,6 +17,7 @@ typedef struct estrutura
 typedef struct
 {
     NO* cabeca;
+    NO* cauda;
     int tamanho;
 } LISTA;
 
@@ -81,6 +82,9 @@ bool inserirNaPos(ITEM item, int i, LISTA *l);
   Objetivo: Remove o item passado da lista. Caso nao seja
             encontrato, retorna false. Se for removido, true.
 */
+
+bool inserirNoFinal (ITEM item, LISTA *l);
+
 bool remover(ITEM item, LISTA *l);
 
 // Exibicao de um item da lista
