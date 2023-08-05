@@ -83,9 +83,11 @@ bool inserirNaPos(ITEM item, int i, LISTA *l);
             encontrato, retorna false. Se for removido, true.
 */
 
-bool inserirNoFinal (ITEM item, LISTA *l);
+bool inserirNoFinal(ITEM item, LISTA *l);
 
 bool remover(ITEM item, LISTA *l);
+
+bool removerDaPos(ITEM *item, int i, LISTA *l);
 
 // Exibicao de um item da lista
 void exibirItem(ITEM i);

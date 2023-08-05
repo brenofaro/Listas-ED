@@ -8,12 +8,23 @@
 // Imprime na tela o status da lista
 void imprimirStatus(LISTA *l)
 {
+    if (vazia(l))
+    {
+        printf("Lista vazia\n");
+        return;
+    }
+    else
+    {
     printf("Tamanho = %d\n", tamanho(l));
 	exibirLista(l);
 	printf("\n");
     printf("Cauda:\n");
     printf("%d", l->cauda->item);
     printf("\n");
+    printf("Cabeca:\n");
+    printf("%d", l->cabeca->item);
+    printf("\n");
+    }
 }
 
 // Testa a insercao de valores na lista
@@ -138,10 +149,25 @@ void testarInserirNoFinal(LISTA *l){
 
 int main(){
 	LISTA l;
-	
+	ITEM* item = (ITEM*) malloc(sizeof(ITEM));
 	inicializar(&l);
     testarInserir(&l);
+    
+    removerDaPos(item, 2, &l);
+    imprimirStatus(&l);
+    removerDaPos(item, 0, &l);
+    imprimirStatus(&l);
+    removerDaPos(item, 2, &l);
+    imprimirStatus(&l);
+    removerDaPos(item, 0, &l);
+    imprimirStatus(&l);
+    removerDaPos(item, 0, &l);
+    imprimirStatus(&l);
+    
+
     testarInserirNoFinal(&l);
+    imprimirStatus(&l);
+
     //testarInserirNaPos(&l);
     /*
     testarBuscar(&l);   

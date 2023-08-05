@@ -5,6 +5,7 @@
         "string.h": "c"
     },
     "conventionalCommits.scopes": [
-        "questao1"
+        "questao1",
+        "lista-3-2"
     ]
 }

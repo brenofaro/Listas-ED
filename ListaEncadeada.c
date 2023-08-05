@@ -21,6 +21,7 @@ bool igual(ITEM x, ITEM y)
 void inicializar(LISTA *l)
 {
     l->cabeca = NULL;
+    l->cauda = NULL;
     l->tamanho = 0;
 }
 
@@ -178,7 +179,13 @@ bool remover(ITEM item, LISTA *l)
       return false;
 
    NO* pAnterior = l->cabeca;
+    if (tamanho(l) == 1)
+    {
+        limpar(l);
+        return true;
+    }
 
+    
    if (igual(item, l->cabeca->item))
    {
        // Remove o item da cabeca da lista e a cabeca passa a ser
@@ -188,6 +195,20 @@ bool remover(ITEM item, LISTA *l)
        free(pAnterior);
        return true;
    }
+    else if (igual(item, l->cauda->item))
+    {
+        // Remove o item da cauda da lista e a cauda passa a ser
+        // item anterior ao removido
+        while (pAnterior->prox->prox)  // prox != NULL
+            pAnterior = pAnterior->prox;
+        
+        free(l->cauda);
+        l->cauda = pAnterior;
+        l->cauda->prox = NULL;
+        l->tamanho--;
+        return true;
+    }
+    
    else
    { 
       // Percorre a lista ate encontrar o item procurado.
@@ -208,7 +229,13 @@ bool remover(ITEM item, LISTA *l)
          pAnterior = pAtual;
       }
     }
-    return false; // Nao removeu
+    return false;
+}
+
+bool removerDaPos(ITEM *item, int i, LISTA *l) {
+    *item = enesimo(i, l);
+    bool resultado = remover(enesimo(i, l), l);
+    return resultado;
 }
 
 
@@ -241,6 +268,7 @@ void limpar(LISTA *l)
         atual = prox;
     }
     l->cabeca = NULL; // ajusta inicio da lista (vazia)
+    l->cauda = NULL;
     l->tamanho = 0;
 }
 
