@@ -59,9 +59,28 @@ bool vazia(LISTA *l)
 
 
 bool inserir(ITEM item, LISTA *l){
-    l->cabeca = criarNo(item, l->cabeca);
-    if (tamanho(l) == 0)
+    
+    if (tamanho(l) == 0){
+        l->cabeca = criarNo(item, l->cabeca);
         l->cauda = l->cabeca;
+    }
+    else{
+        NO* ponteiroAUX = l->cabeca;
+        NO* anterior;
+        while (ponteiroAUX->prox != NULL)
+        {
+            anterior = ponteiroAUX;
+            ponteiroAUX = ponteiroAUX->prox;
+            if (ponteiroAUX->item > item)
+            {
+                l->cabeca = criarNo(item, l->cabeca);
+            }
+            
+        }
+        
+
+    }
+        
     
     l->tamanho++;
     return true;
@@ -154,6 +173,7 @@ bool inserirNaPos(ITEM item, int i, LISTA *l)
     l->tamanho++;
     return true;
 }
+
 
 bool inserirNoFinal (ITEM item, LISTA *l){
     
