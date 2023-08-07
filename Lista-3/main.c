@@ -152,19 +152,12 @@ int main(){
 	ITEM* item = (ITEM*) malloc(sizeof(ITEM));
 	inicializar(&l);
     testarInserir(&l);
-    LISTA l2 =  *(clonar(&l));
-    removerDaPos(item, 2, &l);
+    //LISTA l2 =  *(clonar(&l));
+    //removerDaPos(item, 2, &l);
     imprimirStatus(&l);
 
 
-    imprimirStatus(&l2);
-
-
-    /*
-    testarInserirNoFinal(&l);
-    imprimirStatus(&l);
-    */
-    //testarInserirNaPos(&l);
+    //imprimirStatus(&l2);
     /*
     testarBuscar(&l);   
     testarAlterar(&l);

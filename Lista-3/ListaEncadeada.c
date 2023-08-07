@@ -58,33 +58,48 @@ bool vazia(LISTA *l)
 }
 
 
-bool inserir(ITEM item, LISTA *l){
+bool inserir(ITEM item, LISTA *l) {
     
+    NO* novoNo = criarNo(item, NULL);
+
     if (tamanho(l) == 0){
-        l->cabeca = criarNo(item, l->cabeca);
-        l->cauda = l->cabeca;
+        l->cabeca = l->cauda = novoNo;
     }
     else{
-        NO* ponteiroAUX = l->cabeca;
-        NO* anterior;
-        while (ponteiroAUX->prox != NULL)
+        // Verifica se é menor que a cabeça para inserir no inicio
+        if (item < l->cabeca->item)
         {
-            anterior = ponteiroAUX;
-            ponteiroAUX = ponteiroAUX->prox;
-            if (ponteiroAUX->item > item)
+            novoNo->prox = l->cabeca;
+            l->cabeca = novoNo;
+        }
+        else
+        {
+            NO* ponteiroAUX = l->cabeca;
+            NO* anterior = NULL;
+
+
+            // Chegar na posição correta
+            while (ponteiroAUX != NULL && ponteiroAUX->item <= item)
             {
-                l->cabeca = criarNo(item, l->cabeca);
+                anterior = ponteiroAUX;
+                ponteiroAUX = ponteiroAUX->prox;
             }
-            
+
+            // Inserir o elemento
+            novoNo->prox = ponteiroAUX;
+            anterior->prox = novoNo;
+
+            // Verificar se o novo nó é o último da lista
+            if (ponteiroAUX == NULL) {
+                l->cauda = novoNo;
         }
         
-
     }
-        
+}  
     
     l->tamanho++;
     return true;
-}
+    }
 
 
 /*
